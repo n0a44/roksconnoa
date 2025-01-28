@@ -4,24 +4,29 @@ using UnityEngine;
 using TMPro;
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject panel;
+    
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public GameObject continueButton;
 
     private Queue<string> sentences;
 
+    private bool isTyping = false;
+    private float typingSpeed = 0.05f; 
+    private string currentSentence;
+
     void Start()
     {
         sentences = new Queue<string>();
         continueButton.SetActive(false);
-        panel.SetActive(false);
+        dialoguePanel.SetActive(false);
+       
     }
 
 
     public void StartDialogue(Dialogue dialogue)
     {
-        panel.SetActive(true);
+        
         dialoguePanel.SetActive(true);
         continueButton.SetActive(true);
 
@@ -45,15 +50,55 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
-    }
+        StopAllCoroutines();
 
+        currentSentence = sentences.Dequeue();
+        StartCoroutine(TypeSentence(currentSentence));
+    }
+    private IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        isTyping = true; 
+
+        foreach (char letter in sentence)
+        {
+            dialogueText.text += letter; 
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTyping = false;
+    }
+    public void ContinueDialogue()
+    {
+      
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.text = currentSentence; 
+            isTyping = false; 
+        }
+        else
+        {
+            DisplayNextSentence(); 
+        }
+    }
 
     private void EndDialogue()
     {
-        panel.SetActive(false);
+            
         dialoguePanel.SetActive(false);
         continueButton.SetActive(false);
+
+    }
+
+    void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            DisplayNextSentence(); 
+        }
+
+
     }
 }
