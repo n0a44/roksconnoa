@@ -764,10 +764,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - 'Son: Can I go to the park?'
-    - 'Mom: No, is late and dangerous.'
-    - 'Son: But mommy, please!'
-    - 'Mom: I said NO! You are NOT going to the park! Go to your room NOW!'
+    - 'Son: Can I please go to the park?'
+    - 'Mom: No. It''s already getting dark.'
+    - 'Son: But mommy, please! I won''t stay too long!'
+    - 'Mom: I said no. You know i''m only trying to keep you safe.'
+    - 'Son: Please? It''s not that-'
+    - 'Mom: Enough, go to your room. '
+    - 'Son:Okay... '
 --- !u!1 &483672939
 GameObject:
   m_ObjectHideFlags: 0
