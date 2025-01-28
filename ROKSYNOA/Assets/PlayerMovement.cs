@@ -28,14 +28,14 @@ public class PlayerMovement : MonoBehaviour
        
         orizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        Vector3 poz;
+        Vector3 poz,plsss;
         poz = new Vector3(0, 0.6f, 0);
         rotation.x += Input.GetAxis(xAxis) * sensitivity;
         rotation.y += Input.GetAxis(yAxis) * sensitivity;
         rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
         var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
-
+        
         transform.localRotation = xQuat * yQuat;
         
         
@@ -56,6 +56,10 @@ public class PlayerMovement : MonoBehaviour
          {
              player.transform.position += transform.TransformDirection(Vector3.right) * speed * Time.deltaTime;
          }
+        plsss = player.transform.position;
+        plsss.y = 0;
+        player.transform.position = plsss;
+
     }
 
 }
