@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/rox priv.unity
-    guid: 89b40b012fffc7446844c546d5c3b096
+    path: Assets/Scenes/roxnoa game.unity
+    guid: f3f50081eb4df494ea45f6696825efa1
   - enabled: 1
     path: Assets/Scenes/rope minigame.unity
     guid: 683898e2f2c233d44868d0a65f148748
-  - enabled: 1
-    path: Assets/Scenes/roxnoa game.unity
-    guid: f3f50081eb4df494ea45f6696825efa1
+  - enabled: 0
+    path: Assets/Scenes/rox priv.unity
+    guid: 89b40b012fffc7446844c546d5c3b096
   m_configObjects: {}
